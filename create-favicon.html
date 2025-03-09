@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>焚き木の一夜 - ファビコン作成</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #FF4500;
+        }
+        .preview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .favicon {
+            margin-bottom: 20px;
+        }
+        .sizes {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .size-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .instructions {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #FFA500;
+            margin: 20px 0;
+        }
+        .instructions ol {
+            margin: 10px 0 0 20px;
+        }
+        .browser-tab {
+            display: flex;
+            align-items: center;
+            background-color: #e9e9e9;
+            padding: 5px 15px;
+            border-radius: 8px 8px 0 0;
+            width: 300px;
+            margin: 20px auto 0;
+        }
+        .tab-favicon {
+            margin-right: 8px;
+        }
+        .tab-title {
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>焚き木の一夜 - ファビコン</h1>
+        
+        <div class="preview">
+            <h2>ファビコンプレビュー</h2>
+            
+            <div class="sizes">
+                <div class="size-box">
+                    <svg id="favicon16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16">
+                        <!-- 薪（下部） -->
+                        <rect x="6" y="22" width="20" height="4" rx="1" fill="#8B4513" />
+                        
+                        <!-- 左右の薪 -->
+                        <rect x="4" y="20" width="10" height="3" rx="1" transform="rotate(20 4 20)" fill="#8B4513" />
+                        <rect x="18" y="20" width="10" height="3" rx="1" transform="rotate(-20 28 20)" fill="#8B4513" />
+                        
+                        <!-- 炎（大） -->
+                        <path d="M16,5 Q19,10 20,15 Q21,10 18,5 Q15,10 14,15 Q13,10 16,5 Z" fill="#FF4500" />
+                        
+                        <!-- 炎（中） -->
+                        <path d="M16,8 Q18,12 19,16 Q20,12 17,8 Q14,12 13,16 Q12,12 16,8 Z" fill="#FFA500" />
+                        
+                        <!-- 炎（小） -->
+                        <path d="M16,11 Q17,14 18,17 Q19,14 16,11 Q13,14 14,17 Q15,14 16,11 Z" fill="#FFFF00" />
+                        
+                        <!-- 火の粉 -->
+                        <circle cx="14" cy="7" r="0.5" fill="#FFFF00" />
+                        <circle cx="18" cy="6" r="0.5" fill="#FFFF00" />
+                        <circle cx="16" cy="4" r="0.5" fill="#FFFF00" />
+                        <circle cx="13" cy="9" r="0.5" fill="#FFFF00" />
+                        <circle cx="19" cy="8" r="0.5" fill="#FFFF00" />
+                    </svg>
+                    <p>16x16</p>
+                </div>
+                
+                <div class="size-box">
+                    <svg id="favicon32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+                        <!-- 薪（下部） -->
+                        <rect x="6" y="22" width="20" height="4" rx="1" fill="#8B4513" />
+                        
+                        <!-- 左右の薪 -->
+                        <rect x="4" y="20" width="10" height="3" rx="1" transform="rotate(20 4 20)" fill="#8B4513" />
+                        <rect x="18" y="20" width="10" height="3" rx="1" transform="rotate(-20 28 20)" fill="#8B4513" />
+                        
+                        <!-- 炎（大） -->
+                        <path d="M16,5 Q19,10 20,15 Q21,10 18,5 Q15,10 14,15 Q13,10 16,5 Z" fill="#FF4500" />
+                        
+                        <!-- 炎（中） -->
+                        <path d="M16,8 Q18,12 19,16 Q20,12 17,8 Q14,12 13,16 Q12,12 16,8 Z" fill="#FFA500" />
+                        
+                        <!-- 炎（小） -->
+                        <path d="M16,11 Q17,14 18,17 Q19,14 16,11 Q13,14 14,17 Q15,14 16,11 Z" fill="#FFFF00" />
+                        
+                        <!-- 火の粉 -->
+                        <circle cx="14" cy="7" r="0.5" fill="#FFFF00" />
+                        <circle cx="18" cy="6" r="0.5" fill="#FFFF00" />
+                        <circle cx="16" cy="4" r="0.5" fill="#FFFF00" />
+                        <circle cx="13" cy="9" r="0.5" fill="#FFFF00" />
+                        <circle cx="19" cy="8" r="0.5" fill="#FFFF00" />
+                    </svg>
+                    <p>32x32</p>
+                </div>
+                
+                <div class="size-box">
+                    <svg id="favicon64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64">
+                        <!-- 薪（下部） -->
+                        <rect x="6" y="22" width="20" height="4" rx="1" fill="#8B4513" />
+                        
+                        <!-- 左右の薪 -->
+                        <rect x="4" y="20" width="10" height="3" rx="1" transform="rotate(20 4 20)" fill="#8B4513" />
+                        <rect x="18" y="20" width="10" height="3" rx="1" transform="rotate(-20 28 20)" fill="#8B4513" />
+                        
+                        <!-- 炎（大） -->
+                        <path d="M16,5 Q19,10 20,15 Q21,10 18,5 Q15,10 14,15 Q13,10 16,5 Z" fill="#FF4500" />
+                        
+                        <!-- 炎（中） -->
+                        <path d="M16,8 Q18,12 19,16 Q20,12 17,8 Q14,12 13,16 Q12,12 16,8 Z" fill="#FFA500" />
+                        
+                        <!-- 炎（小） -->
+                        <path d="M16,11 Q17,14 18,17 Q19,14 16,11 Q13,14 14,17 Q15,14 16,11 Z" fill="#FFFF00" />
+                        
+                        <!-- 火の粉 -->
+                        <circle cx="14" cy="7" r="0.5" fill="#FFFF00" />
+                        <circle cx="18" cy="6" r="0.5" fill="#FFFF00" />
+                        <circle cx="16" cy="4" r="0.5" fill="#FFFF00" />
+                        <circle cx="13" cy="9" r="0.5" fill="#FFFF00" />
+                        <circle cx="19" cy="8" r="0.5" fill="#FFFF00" />
+                    </svg>
+                    <p>64x64</p>
+                </div>
+            </div>
+            
+            <div class="browser-tab">
+                <div class="tab-favicon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16">
+                        <!-- 薪（下部） -->
+                        <rect x="6" y="22" width="20" height="4" rx="1" fill="#8B4513" />
+                        
+                        <!-- 左右の薪 -->
+                        <rect x="4" y="20" width="10" height="3" rx="1" transform="rotate(20 4 20)" fill="#8B4513" />
+                        <rect x="18" y="20" width="10" height="3" rx="1" transform="rotate(-20 28 20)" fill="#8B4513" />
+                        
+                        <!-- 炎（大） -->
+                        <path d="M16,5 Q19,10 20,15 Q21,10 18,5 Q15,10 14,15 Q13,10 16,5 Z" fill="#FF4500" />
+                        
+                        <!-- 炎（中） -->
+                        <path d="M16,8 Q18,12 19,16 Q20,12 17,8 Q14,12 13,16 Q12,12 16,8 Z" fill="#FFA500" />
+                        
+                        <!-- 炎（小） -->
+                        <path d="M16,11 Q17,14 18,17 Q19,14 16,11 Q13,14 14,17 Q15,14 16,11 Z" fill="#FFFF00" />
+                        
+                        <!-- 火の粉 -->
+                        <circle cx="14" cy="7" r="0.5" fill="#FFFF00" />
+                        <circle cx="18" cy="6" r="0.5" fill="#FFFF00" />
+                        <circle cx="16" cy="4" r="0.5" fill="#FFFF00" />
+                        <circle cx="13" cy="9" r="0.5" fill="#FFFF00" />
+                        <circle cx="19" cy="8" r="0.5" fill="#FFFF00" />
+                    </svg>
+                </div>
+                <div class="tab-title">焚き木の一夜</div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>ファビコンの保存方法</h3>
+            <ol>
+                <li>下の「ファビコンをダウンロード」ボタンをクリックします。</li>
+                <li>SVGファイルが保存されます。</li>
+                <li>オンラインのファビコンコンバーターを使用して、SVGをICOファイルに変換します。</li>
+                <li>変換したICOファイルを「favicon.ico」という名前でプロジェクトのルートディレクトリに保存します。</li>
+            </ol>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a id="download-link" download="favicon.svg" href="#" style="display: inline-block; background-color: #FF4500; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">ファビコンをダウンロード</a>
+        </div>
+    </div>
+
+    <script>
+        // SVGをデータURLに変換してダウンロードリンクを設定
+        document.addEventListener('DOMContentLoaded', function() {
+            const svgElement = document.getElementById('favicon32');
+            const svgData = new XMLSerializer().serializeToString(svgElement);
+            const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+            const svgUrl = URL.createObjectURL(svgBlob);
+            
+            const downloadLink = document.getElementById('download-link');
+            downloadLink.href = svgUrl;
+        });
+    </script>
+</body>
+</html>
