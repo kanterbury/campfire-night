@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>焚き木の一夜 - OGP画像作成</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #FF4500;
+        }
+        .preview-container {
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .ogp-preview {
+            width: 1200px;
+            height: 630px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #FF7F50, #0A0A1A 50%, #FF7F50);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .campfire-scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        .logs {
+            position: absolute;
+            bottom: 200px;
+            width: 300px;
+            height: 80px;
+            background-color: #8B4513;
+            border-radius: 8px;
+            z-index: 2;
+        }
+        .logs:before, .logs:after {
+            content: '';
+            position: absolute;
+            width: 260px;
+            height: 50px;
+            background-color: #8B4513;
+            border-radius: 8px;
+        }
+        .logs:before {
+            transform: rotate(25deg);
+            left: -60px;
+            bottom: 15px;
+        }
+        .logs:after {
+            transform: rotate(-25deg);
+            right: -60px;
+            bottom: 15px;
+        }
+        .flames {
+            position: absolute;
+            bottom: 240px;
+            width: 200px;
+            height: 200px;
+            z-index: 3;
+        }
+        .flame {
+            position: absolute;
+            bottom: 0;
+            width: 40px;
+            height: 160px;
+            background: linear-gradient(to top, #FF4500, #FFA500, #FFFF00);
+            border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+            filter: blur(2px);
+            box-shadow: 0 0 20px 10px rgba(255, 69, 0, 0.7);
+            animation: flicker 2s infinite alternate;
+        }
+        .flame1 {
+            left: 80px;
+            height: 180px;
+            width: 45px;
+            z-index: 5;
+        }
+        .flame2 {
+            left: 60px;
+            height: 150px;
+            width: 40px;
+            animation-delay: 0.2s;
+            z-index: 4;
+        }
+        .flame3 {
+            left: 100px;
+            height: 160px;
+            width: 42px;
+            animation-delay: 0.4s;
+            z-index: 4;
+        }
+        .flame4 {
+            left: 40px;
+            height: 130px;
+            width: 38px;
+            animation-delay: 0.6s;
+            z-index: 3;
+        }
+        .flame5 {
+            left: 120px;
+            height: 140px;
+            width: 39px;
+            animation-delay: 0.8s;
+            z-index: 3;
+        }
+        .embers {
+            position: absolute;
+            bottom: 280px;
+            width: 300px;
+            height: 300px;
+            z-index: 4;
+        }
+        .ember {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #FFA500;
+            box-shadow: 0 0 10px 4px rgba(255, 165, 0, 0.8);
+            animation: rise 3s infinite;
+        }
+        .ember1 { left: 90px; bottom: 0; animation-delay: 0.2s; }
+        .ember2 { left: 110px; bottom: 10px; animation-delay: 0.7s; }
+        .ember3 { left: 80px; bottom: 20px; animation-delay: 1.2s; }
+        .ember4 { left: 120px; bottom: 30px; animation-delay: 1.7s; }
+        .ember5 { left: 70px; bottom: 10px; animation-delay: 2.2s; }
+        .ember6 { left: 130px; bottom: 20px; animation-delay: 2.7s; }
+        
+        .title-container {
+            position: relative;
+            z-index: 10;
+            margin-top: 320px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            max-width: 80%;
+        }
+        .title {
+            font-size: 72px;
+            font-weight: bold;
+            margin: 0 0 20px 0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .subtitle {
+            font-size: 32px;
+            margin: 0;
+            opacity: 0.9;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        @keyframes flicker {
+            0% { transform: scaleY(1) scaleX(1); opacity: 0.9; }
+            25% { transform: scaleY(1.2) scaleX(0.8); opacity: 1; }
+            50% { transform: scaleY(0.8) scaleX(1.2); opacity: 0.9; }
+            75% { transform: scaleY(1.1) scaleX(0.9); opacity: 1; }
+            100% { transform: scaleY(1) scaleX(1); opacity: 0.9; }
+        }
+        
+        @keyframes rise {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
+            50% { transform: translateY(-150px) translateX(20px) scale(0.8); opacity: 0.6; }
+            100% { transform: translateY(-300px) translateX(40px) scale(0); opacity: 0; }
+        }
+        
+        .instructions {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #FFA500;
+            margin: 20px 0;
+        }
+        .instructions ol {
+            margin: 10px 0 0 20px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: #FF4500;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #E03E00;
+        }
+        
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>焚き木の一夜 - OGP画像作成</h1>
+        
+        <div class="preview-container">
+            <div class="ogp-preview" id="ogp-canvas">
+                <div class="campfire-scene">
+                    <div class="logs"></div>
+                    <div class="flames">
+                        <div class="flame flame1"></div>
+                        <div class="flame flame2"></div>
+                        <div class="flame flame3"></div>
+                        <div class="flame flame4"></div>
+                        <div class="flame flame5"></div>
+                    </div>
+                    <div class="embers">
+                        <div class="ember ember1"></div>
+                        <div class="ember ember2"></div>
+                        <div class="ember ember3"></div>
+                        <div class="ember ember4"></div>
+                        <div class="ember ember5"></div>
+                        <div class="ember ember6"></div>
+                    </div>
+                </div>
+                
+                <div class="title-container">
+                    <h1 class="title">焚き木の一夜</h1>
+                    <p class="subtitle">スクロールで体験する焚き火の時間</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>OGP画像の保存方法</h3>
+            <ol>
+                <li>上記のプレビューがOGP画像として使用されます。</li>
+                <li>下の「OGP画像をダウンロード」ボタンをクリックします。</li>
+                <li>画像が「ogp-image.jpg」という名前で保存されます。</li>
+                <li>保存した画像をプロジェクトのルートディレクトリに配置してください。</li>
+                <li>index.htmlのOGPタグに設定されているURLと一致することを確認してください。</li>
+            </ol>
+        </div>
+        
+        <div class="btn-container">
+            <button id="download-btn" class="download-btn">OGP画像をダウンロード</button>
+        </div>
+    </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadBtn = document.getElementById('download-btn');
+            
+            downloadBtn.addEventListener('click', function() {
+                // html2canvasライブラリを使用してOGPプレビューを画像に変換
+                html2canvas(document.getElementById('ogp-canvas')).then(function(canvas) {
+                    // キャンバスを画像に変換
+                    const image = canvas.toDataURL('image/jpeg', 0.9);
+                    
+                    // ダウンロードリンクを作成
+                    const link = document.createElement('a');
+                    link.href = image;
+                    link.download = 'ogp-image.jpg';
+                    
+                    // リンクをクリックしてダウンロード
+                    link.click();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
